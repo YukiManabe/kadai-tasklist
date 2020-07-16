@@ -41,6 +41,9 @@ public class CreateServlet extends HttpServlet {
 
             Tasks m = new Tasks();
 
+            String title = request.getParameter("title");
+            m.setTitle(title);
+
             String content = request.getParameter("content");
             m.setContent(content);
 
