@@ -45,9 +45,6 @@ public class UpdateServlet extends HttpServlet {
 
             // フォームの内容を各プロパティに上書き
 
-            String title = request.getParameter("title");
-            m.setTitle(title);
-
             String content = request.getParameter("content");
             m.setContent(content);
 
