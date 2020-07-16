@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import models.tasks;
-import models.validators.tasksValidator;
+import models.Tasks;
+import models.validators.TasksValidator;
 import utils.DBUtil;
 
 /**
@@ -39,10 +39,7 @@ public class CreateServlet extends HttpServlet {
         if(_token != null && _token.equals(request.getSession().getId())) {
             EntityManager em = DBUtil.createEntityManager();
 
-            tasks m = new tasks();
-
-            String title = request.getParameter("title");
-            m.setTitle(title);
+            Tasks m = new Tasks();
 
             String content = request.getParameter("content");
             m.setContent(content);
@@ -52,7 +49,7 @@ public class CreateServlet extends HttpServlet {
             m.setUpdated_at(currentTime);
 
          // バリデーションを実行してエラーがあったら新規登録のフォームに戻る
-            List<String> errors = tasksValidator.validate(m);
+            List<String> errors = TasksValidator.validate(m);
             if(errors.size() > 0) {
                 em.close();
 

@@ -3,17 +3,12 @@ package models.validators;
 import java.util.ArrayList;
 import java.util.List;
 
-import models.tasks;
+import models.Tasks;
 
-public class tasksValidator {
+public class TasksValidator {
     // バリデーションを実行する
-    public static List<String> validate(tasks m) {
+    public static List<String> validate(Tasks m) {
         List<String> errors = new ArrayList<String>();
-
-        String title_error = _validateTitle(m.getTitle());
-        if(!title_error.equals("")) {
-            errors.add(title_error);
-        }
 
         String content_error = _validateContent(m.getContent());
         if(!content_error.equals("")) {
@@ -24,6 +19,7 @@ public class tasksValidator {
     }
 
     // タイトルの必須入力チェック
+    @SuppressWarnings("unused")
     private static String _validateTitle(String title) {
         if(title == null || title.equals("")) {
             return "タイトルを入力してください。";

@@ -15,22 +15,19 @@ import javax.persistence.Table;
 @NamedQueries({
     @NamedQuery(
             name = "getAllTasks",
-            query = "SELECT m FROM tasks AS m ORDER BY m.id DESC"
+            query = "SELECT m FROM Tasks AS m ORDER BY m.id DESC"
             ),
     @NamedQuery(
             name = "getTasksCount",
-            query = "SELECT COUNT(m) FROM tasks AS m"
+            query = "SELECT COUNT(m) FROM Tasks AS m"
             )
 })
 @Table(name = "tasks")
-public class tasks {
+public class Tasks {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    @Column(name = "title", length = 255, nullable = false)
-    private String title;
 
     @Column(name = "content", length = 255, nullable = false)
     private String content;
@@ -47,14 +44,6 @@ public class tasks {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public String getContent() {

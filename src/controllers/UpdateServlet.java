@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import models.tasks;
-import models.validators.tasksValidator;
+import models.Tasks;
+import models.validators.TasksValidator;
 import utils.DBUtil;
 
 /**
@@ -41,11 +41,9 @@ public class UpdateServlet extends HttpServlet {
 
             // セッションスコープからメッセージのIDを取得して
             // 該当のIDのメッセージ1件のみをデータベースから取得
-            tasks m = em.find(tasks.class, (Integer)(request.getSession().getAttribute("tasks_id")));
+            Tasks m = em.find(Tasks.class, (Integer)(request.getSession().getAttribute("tasks_id")));
 
             // フォームの内容を各プロパティに上書き
-            String title = request.getParameter("title");
-            m.setTitle(title);
 
             String content = request.getParameter("content");
             m.setContent(content);
@@ -56,7 +54,7 @@ public class UpdateServlet extends HttpServlet {
 
 
          // バリデーションを実行してエラーがあったら編集画面のフォームに戻る
-            List<String> errors = tasksValidator.validate(m);
+            List<String> errors = TasksValidator.validate(m);
             if(errors.size() > 0) {
                 em.close();
 
