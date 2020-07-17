@@ -9,6 +9,8 @@
 
     </div>
 </c:if>
+<label for="title">タイトル</label>
+<input type="text" name="title" value="${tasks.title}" />
 <br /><br />
 
 <label for="content">内容</label><br />

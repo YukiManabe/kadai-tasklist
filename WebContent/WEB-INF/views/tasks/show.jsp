@@ -10,6 +10,10 @@
                 <table>
                     <tbody>
                         <tr>
+                            <th>タイトル</th>
+                            <td><c:out value="${tasks.title}" /></td>
+                        </tr>
+                        <tr>
                             <th>内容</th>
                             <td><c:out value="${tasks.content}" /></td>
                         </tr>
